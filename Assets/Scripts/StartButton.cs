@@ -6,26 +6,35 @@ using UnityEngine.UI;
 
 public class StartButton : MonoBehaviour
 {
+    [SerializeField] private StopButton _stopButton;
     private Button _button;
-    public event Action OnClicked;
+    public event Action Clicked;
 
     private void Awake()
     {
         _button = GetComponent<Button>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         _button.onClick.AddListener(OnButtonClicked);
+        _stopButton.Clicked += OnStopButtonClicked;
+    }
+
+    private void OnStopButtonClicked()
+    {
+        _button.interactable = true;
     }
 
     private void OnButtonClicked()
     {
-        OnClicked?.Invoke();
+        _button.interactable = false;
+        Clicked?.Invoke();
     }
 
     private void OnDisable()
     {
         _button.onClick.RemoveListener(OnButtonClicked);
+        _stopButton.Clicked -= OnStopButtonClicked;
     }
 }

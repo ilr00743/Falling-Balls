@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class StopButton : MonoBehaviour
 {
     private Button _button;
-    public event Action OnClicked;
+    public event Action Clicked;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class StopButton : MonoBehaviour
 
     private void OnButtonClicked()
     {
-        OnClicked?.Invoke();
+        Clicked?.Invoke();
     }
 
     private void OnDisable()

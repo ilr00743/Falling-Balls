@@ -25,13 +25,13 @@ public class Timer : MonoBehaviour
 
     private void OnEnable()
     {
-        _startButton.OnClicked += OnStarted;
-        _stopButton.OnClicked += OnStopped;
+        _startButton.Clicked += OnStarted;
+        _stopButton.Clicked += OnStopped;
     }
 
     private void OnDisable()
     {
-        _startButton.OnClicked -= OnStarted;
+        _startButton.Clicked -= OnStarted;
     }
 
     private void OnStarted()
