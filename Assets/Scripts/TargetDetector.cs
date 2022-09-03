@@ -10,7 +10,10 @@ public class TargetDetector : MonoBehaviour
 
     private void Awake()
     {
-#if UNITY_ANDROID || UNITY_IOS
+#if UNITY_ANDROID
+        _input = new MobileInput();
+#endif
+#if UNITY_STANDALONE || UNITY_EDITOR
         _input = new MouseInput();
 #endif
         _camera = Camera.main;
