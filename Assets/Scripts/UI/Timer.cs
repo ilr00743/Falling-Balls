@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(TMP_Text))]
 public class Timer : MonoBehaviour
 {
     [SerializeField] private StartButton _startButton;

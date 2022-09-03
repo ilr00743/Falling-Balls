@@ -1,0 +1,43 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TargetDetector : MonoBehaviour
+{
+    private IInput _input;
+    private Camera _camera;
+
+    private void Awake()
+    {
+#if UNITY_ANDROID || UNITY_IOS
+        _input = new MouseInput();
+#endif
+        _camera = Camera.main;
+    }
+
+    private void OnEnable()
+    {
+        _input.Clicked += OnClicked;
+    }
+
+    private void Update()
+    {
+        _input.Click();
+    }
+
+    private void OnClicked(Vector3 position)
+    {
+        Ray ray = _camera.ScreenPointToRay(position);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.TryGetComponent<ITarget>(out var target))
+            {
+                target.TakeHit();
+                Debug.Log("Click");
+            }
+        }
+    }
+}

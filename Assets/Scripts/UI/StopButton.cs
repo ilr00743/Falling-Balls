@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Button))]
 public class StopButton : MonoBehaviour
 {
     private Button _button;
@@ -14,7 +15,7 @@ public class StopButton : MonoBehaviour
         _button = GetComponent<Button>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         _button.onClick.AddListener(OnButtonClicked);
     }

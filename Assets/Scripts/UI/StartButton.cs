@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Button))]
 public class StartButton : MonoBehaviour
 {
     [SerializeField] private StopButton _stopButton;
