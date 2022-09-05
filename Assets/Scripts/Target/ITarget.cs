@@ -1,4 +1,4 @@
-namespace Target
+namespace FallingBalls.Target
 {
     public interface ITarget
     {

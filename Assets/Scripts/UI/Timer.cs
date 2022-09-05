@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace FallingBalls.UI
 {
     [RequireComponent(typeof(TMP_Text))]
     public class Timer : MonoBehaviour

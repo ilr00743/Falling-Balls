@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace FallingBalls.UI
 {
     [RequireComponent(typeof(Button))]
     public class StartButton : MonoBehaviour

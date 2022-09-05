@@ -1,8 +1,8 @@
-using Data;
-using Target;
+using FallingBalls.Data;
+using FallingBalls.Target;
 using UnityEngine;
 
-namespace Factory
+namespace FallingBalls.Factory
 {
     [CreateAssetMenu(fileName = "BallFactory", menuName = "Ball/Factory", order = 0)]
     public class BallFactory : ScriptableObject

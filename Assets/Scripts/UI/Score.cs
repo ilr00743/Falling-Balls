@@ -1,8 +1,8 @@
-using Common;
+using FallingBalls.Common;
 using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace FallingBalls.UI
 {
     public class Score : MonoBehaviour
     {

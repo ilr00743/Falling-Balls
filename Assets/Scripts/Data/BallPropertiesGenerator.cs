@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 using Color = UnityEngine.Color;
 
-namespace Data
+namespace FallingBalls.Data
 {
     [CreateAssetMenu(fileName = "BallPropertiesGenerator", menuName = "Ball/PropertiesGenerator", order = 0)]
     public class BallPropertiesGenerator : ScriptableObject

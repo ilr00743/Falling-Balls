@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Target
+namespace FallingBalls.Target
 {
     public class BallView : MonoBehaviour
     {

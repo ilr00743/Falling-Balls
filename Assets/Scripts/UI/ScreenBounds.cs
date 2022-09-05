@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UI
+namespace FallingBalls.UI
 {
     public class ScreenBounds : MonoBehaviour
     {

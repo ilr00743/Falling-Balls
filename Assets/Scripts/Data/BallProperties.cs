@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Data
+namespace FallingBalls.Data
 {
     public struct BallProperties
     {

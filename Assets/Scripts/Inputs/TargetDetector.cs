@@ -1,7 +1,7 @@
-using Target;
+using FallingBalls.Target;
 using UnityEngine;
 
-namespace Input
+namespace FallingBalls.Inputs
 {
     public class TargetDetector : MonoBehaviour
     {

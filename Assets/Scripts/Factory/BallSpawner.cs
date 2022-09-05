@@ -1,9 +1,9 @@
 using System.Collections;
-using Target;
-using UI;
+using FallingBalls.Target;
+using FallingBalls.UI;
 using UnityEngine;
 
-namespace Factory
+namespace FallingBalls.Factory
 {
     public class BallSpawner : MonoBehaviour
     {

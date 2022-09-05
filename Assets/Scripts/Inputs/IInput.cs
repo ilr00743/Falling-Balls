@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Input
+namespace FallingBalls.Inputs
 {
     public interface IInput
     {

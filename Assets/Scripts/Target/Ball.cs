@@ -1,9 +1,9 @@
-using Common;
-using Data;
-using UI;
+using FallingBalls.Common;
+using FallingBalls.Data;
+using FallingBalls.UI;
 using UnityEngine;
 
-namespace Target
+namespace FallingBalls.Target
 {
     public class Ball : MonoBehaviour, ITarget
     {
