@@ -10,7 +10,7 @@ namespace FallingBalls.Data
         [SerializeField] private List<Color> _colors;
         [SerializeField, Range(0.65f, 2f)] private float _minSize, _maxSize;
         [SerializeField, Range(5, 20)] private float _averageSpeed ;
-        [SerializeField] private int _rewardPoints = 50;
+        [SerializeField] private int _averageRewardPoints = 50;
 
         public BallProperties Get()
         {
@@ -19,7 +19,7 @@ namespace FallingBalls.Data
                 Color = _colors[Random.Range(0, _colors.Count)],
                 Size = Random.Range(_minSize, _maxSize),
                 Speed = _averageSpeed,
-                RewardPoints = _rewardPoints
+                RewardPoints = _averageRewardPoints
             };
 
             return ballProperties;
