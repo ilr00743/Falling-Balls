@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace FallingBalls.Target
 {
+    [RequireComponent(typeof(BallView))]
+    [RequireComponent(typeof(Collider))]
     public class Ball : MonoBehaviour, ITarget
     {
         [SerializeField] private int _rewardPointsMultiplier;
@@ -70,7 +72,5 @@ namespace FallingBalls.Target
         {
             EventsHolder.StopClicked -= OnStopClicked;
         }
-
-        // TODO: turn off interactable after stop game
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace FallingBalls.UI
 {
+    [RequireComponent(typeof(TMP_Text))]
     public class Score : MonoBehaviour
     {
         [SerializeField] private StartButton _startButton;

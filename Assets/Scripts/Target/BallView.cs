@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace FallingBalls.Target
 {
+    [RequireComponent(typeof(MeshRenderer))]
     public class BallView : MonoBehaviour
     {
         private MeshRenderer _meshRenderer;
