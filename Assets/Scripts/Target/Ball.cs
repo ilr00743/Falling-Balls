@@ -9,13 +9,25 @@ namespace FallingBalls.Target
     {
         [SerializeField] private int _rewardPointsMultiplier;
         private BallView _ballView;
+        private Collider _collider;
         private float _speed;
         private int _rewardPoints;
         private float _bottomBorder;
 
+        private void OnEnable()
+        {
+            EventsHolder.StopClicked += OnStopClicked;
+        }
+
+        private void OnStopClicked()
+        {
+            _collider.enabled = false;
+        }
+
         private void Awake()
         {
             _ballView = GetComponent<BallView>();
+            _collider = GetComponent<Collider>();
         }
 
         public void Init(BallProperties properties)
@@ -53,5 +65,12 @@ namespace FallingBalls.Target
             EventsHolder.SendTargetHit(Mathf.FloorToInt(_rewardPoints));
             Destroy(gameObject);
         }
+
+        private void OnDestroy()
+        {
+            EventsHolder.StopClicked -= OnStopClicked;
+        }
+
+        // TODO: turn off interactable after stop game
     }
 }

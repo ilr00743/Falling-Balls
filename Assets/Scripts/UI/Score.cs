@@ -6,6 +6,7 @@ namespace FallingBalls.UI
 {
     public class Score : MonoBehaviour
     {
+        [SerializeField] private StartButton _startButton;
         private TMP_Text _scoreText;
         private int _value;
 
@@ -17,6 +18,7 @@ namespace FallingBalls.UI
         private void OnEnable()
         {
             EventsHolder.Hit += OnHit;
+            _startButton.Clicked += OnClicked;
         }
 
         private void OnHit(int value)
@@ -24,6 +26,11 @@ namespace FallingBalls.UI
             Debug.Log(value);
             _value += value;
             _scoreText.SetText($"Score: {_value}");
+        }
+
+        private void OnClicked()
+        {
+            _scoreText.SetText("Score: 0");
         }
 
         private void OnDisable()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using FallingBalls.Target;
 using FallingBalls.UI;
@@ -9,15 +10,23 @@ namespace FallingBalls.Factory
     {
         [SerializeField] private BallFactory _ballFactory;
         [SerializeField] private ScreenBounds _screenBounds;
+        [SerializeField] private StartButton _startButton;
+        [SerializeField] private StopButton _stopButton;
+        
         [SerializeField, Range(1, 10)] private float _spawnInterval;
 
         private IEnumerator _coroutine;
+
+        private void OnEnable()
+        {
+            _startButton.Clicked += OnStartClicked;
+            _stopButton.Clicked += OnStopClicked;
+        }
 
         private void Start()
         {
             _screenBounds.Init();
             _coroutine = Spawn();
-            StartCoroutine(_coroutine);
         }
 
         private void StartSpawn()
@@ -39,6 +48,16 @@ namespace FallingBalls.Factory
                 ball.SpawnTo(_screenBounds);
                 yield return new WaitForSeconds(_spawnInterval);
             }
+        }
+
+        private void OnStartClicked()
+        {
+            StartSpawn();
+        }
+
+        private void OnStopClicked()
+        {
+            StopSpawn();
         }
     }
 }

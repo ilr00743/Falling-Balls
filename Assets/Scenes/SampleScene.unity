@@ -1127,6 +1127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballFactory: {fileID: 11400000, guid: 537a3d98a8c60a9458769245e1ff1c90, type: 2}
   _screenBounds: {fileID: 225494592}
+  _startButton: {fileID: 991660780}
+  _stopButton: {fileID: 1332765664}
   _spawnInterval: 1
 --- !u!1 &1882141262
 GameObject:
@@ -1447,3 +1449,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1a2f7a3ffbbba4391f051ab23b7927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startButton: {fileID: 991660780}

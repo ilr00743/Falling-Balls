@@ -1,4 +1,5 @@
 using System;
+using FallingBalls.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,7 @@ namespace FallingBalls.UI
         private void OnButtonClicked()
         {
             Clicked?.Invoke();
+            EventsHolder.SendStopClicked();
         }
 
         private void OnDisable()
