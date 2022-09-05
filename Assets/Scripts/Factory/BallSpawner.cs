@@ -13,7 +13,7 @@ namespace FallingBalls.Factory
         [SerializeField] private StartButton _startButton;
         [SerializeField] private StopButton _stopButton;
         
-        [SerializeField, Range(1, 10)] private float _spawnInterval;
+        [SerializeField, Range(0.3f, 10)] private float _spawnInterval;
 
         private IEnumerator _coroutine;
 
