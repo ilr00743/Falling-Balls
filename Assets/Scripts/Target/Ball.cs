@@ -1,54 +1,57 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Common;
+using Data;
+using UI;
 using UnityEngine;
 
-public class Ball : MonoBehaviour, ITarget
+namespace Target
 {
-    [SerializeField] private int _rewardPointsMultiplier;
-    private BallView _ballView;
-    private float _speed;
-    private int _rewardPoints;
-    private float _bottomBorder;
-
-    private void Awake()
+    public class Ball : MonoBehaviour, ITarget
     {
-        _ballView = GetComponent<BallView>();
-    }
+        [SerializeField] private int _rewardPointsMultiplier;
+        private BallView _ballView;
+        private float _speed;
+        private int _rewardPoints;
+        private float _bottomBorder;
 
-    public void Init(BallProperties properties)
-    {
-        transform.localScale = new Vector3(properties.Size, properties.Size, properties.Size);
-        _speed = properties.Speed / properties.Size;
-        _rewardPoints =  Mathf.RoundToInt(_speed / properties.RewardPoints * _rewardPointsMultiplier);
-        _ballView.Init(properties.Color);
-    }
-
-    private void Update()
-    { 
-        transform.Translate(Vector3.down * (_speed * Time.deltaTime));
-
-        if (transform.position.y < _bottomBorder)
+        private void Awake()
         {
-            GetToBottom();
+            _ballView = GetComponent<BallView>();
         }
-        // transform.position += Vector3.down * _speed / transform.localScale.x * Time.deltaTime;
-    }
 
-    public void SpawnTo(ScreenBounds screenBounds)
-    {
-        transform.position = screenBounds.GetRandomTopPoint();
-        _bottomBorder = screenBounds.BottomBorder;
-    }
+        public void Init(BallProperties properties)
+        {
+            transform.localScale = new Vector3(properties.Size, properties.Size, properties.Size);
+            _speed = properties.Speed / properties.Size;
+            _rewardPoints =  Mathf.RoundToInt(_speed / properties.RewardPoints * _rewardPointsMultiplier);
+            _ballView.Init(properties.Color);
+        }
 
-    private void GetToBottom()
-    {
-        Destroy(gameObject);
-    }
+        private void Update()
+        { 
+            transform.Translate(Vector3.down * (_speed * Time.deltaTime));
+
+            if (transform.position.y < _bottomBorder)
+            {
+                GetToBottom();
+            }
+            // transform.position += Vector3.down * _speed / transform.localScale.x * Time.deltaTime;
+        }
+
+        public void SpawnTo(ScreenBounds screenBounds)
+        {
+            transform.position = screenBounds.GetRandomTopPoint();
+            _bottomBorder = screenBounds.BottomBorder;
+        }
+
+        private void GetToBottom()
+        {
+            Destroy(gameObject);
+        }
     
-    public void TakeHit()
-    {
-        EventsHolder.SendTargetHit(Mathf.FloorToInt(_rewardPoints));
-        Destroy(gameObject);
+        public void TakeHit()
+        {
+            EventsHolder.SendTargetHit(Mathf.FloorToInt(_rewardPoints));
+            Destroy(gameObject);
+        }
     }
 }

@@ -1,45 +1,45 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Target;
 using UnityEngine;
 
-public class TargetDetector : MonoBehaviour
+namespace Input
 {
-    private IInput _input;
-    private Camera _camera;
-
-    private void Awake()
+    public class TargetDetector : MonoBehaviour
     {
+        private IInput _input;
+        private Camera _camera;
+
+        private void Awake()
+        {
 #if UNITY_ANDROID
-        _input = new MobileInput();
+            _input = new MobileInput();
 #endif
 #if UNITY_STANDALONE || UNITY_EDITOR
-        _input = new MouseInput();
+            _input = new MouseInput();
 #endif
-        _camera = Camera.main;
-    }
+            _camera = Camera.main;
+        }
 
-    private void OnEnable()
-    {
-        _input.Clicked += OnClicked;
-    }
-
-    private void Update()
-    {
-        _input.Click();
-    }
-
-    private void OnClicked(Vector3 position)
-    {
-        Ray ray = _camera.ScreenPointToRay(position);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
+        private void OnEnable()
         {
-            if (hit.collider.TryGetComponent<ITarget>(out var target))
+            _input.Clicked += OnClicked;
+        }
+
+        private void Update()
+        {
+            _input.Click();
+        }
+
+        private void OnClicked(Vector3 position)
+        {
+            Ray ray = _camera.ScreenPointToRay(position);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
             {
-                target.TakeHit();
-                Debug.Log("Click");
+                if (hit.collider.TryGetComponent<ITarget>(out var target))
+                {
+                    target.TakeHit();
+                }
             }
         }
     }

@@ -1,41 +1,42 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
-public class StartButton : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private StopButton _stopButton;
-    private Button _button;
-    public event Action Clicked;
-
-    private void Awake()
+    [RequireComponent(typeof(Button))]
+    public class StartButton : MonoBehaviour
     {
-        _button = GetComponent<Button>();
-    }
+        [SerializeField] private StopButton _stopButton;
+        private Button _button;
+        public event Action Clicked;
 
-    private void OnEnable()
-    {
-        _button.onClick.AddListener(OnButtonClicked);
-        _stopButton.Clicked += OnStopButtonClicked;
-    }
+        private void Awake()
+        {
+            _button = GetComponent<Button>();
+        }
 
-    private void OnStopButtonClicked()
-    {
-        _button.interactable = true;
-    }
+        private void OnEnable()
+        {
+            _button.onClick.AddListener(OnButtonClicked);
+            _stopButton.Clicked += OnStopButtonClicked;
+        }
 
-    private void OnButtonClicked()
-    {
-        _button.interactable = false;
-        Clicked?.Invoke();
-    }
+        private void OnStopButtonClicked()
+        {
+            _button.interactable = true;
+        }
 
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(OnButtonClicked);
-        _stopButton.Clicked -= OnStopButtonClicked;
+        private void OnButtonClicked()
+        {
+            _button.interactable = false;
+            Clicked?.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(OnButtonClicked);
+            _stopButton.Clicked -= OnStopButtonClicked;
+        }
     }
 }

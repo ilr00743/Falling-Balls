@@ -1,19 +1,19 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BallView : MonoBehaviour
+namespace Target
 {
-    private MeshRenderer _meshRenderer;
-
-    private void Awake()
+    public class BallView : MonoBehaviour
     {
-        _meshRenderer = GetComponent<MeshRenderer>();
-    }
+        private MeshRenderer _meshRenderer;
 
-    public void Init(Color color)
-    {
-        _meshRenderer.material.color = color;
+        private void Awake()
+        {
+            _meshRenderer = GetComponent<MeshRenderer>();
+        }
+
+        public void Init(Color color)
+        {
+            _meshRenderer.material.color = color;
+        }
     }
 }

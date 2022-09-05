@@ -1,20 +1,21 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MobileInput : IInput
+namespace Input
 {
-    public event Action<Vector3> Clicked;
-
-    public void Click()
+    public class MobileInput : IInput
     {
-        if (Input.touchCount > 0)
+        public event Action<Vector3> Clicked;
+
+        public void Click()
         {
-            var touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
+            if (Input.touchCount > 0)
             {
-                Clicked?.Invoke(touch.position);
+                var touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began)
+                {
+                    Clicked?.Invoke(touch.position);
+                }
             }
         }
     }

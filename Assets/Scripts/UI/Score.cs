@@ -1,33 +1,34 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Common;
 using TMPro;
 using UnityEngine;
 
-public class Score : MonoBehaviour
+namespace UI
 {
-    private TMP_Text _scoreText;
-    private int _value;
-
-    private void Awake()
+    public class Score : MonoBehaviour
     {
-        _scoreText = GetComponent<TMP_Text>();
-    }
+        private TMP_Text _scoreText;
+        private int _value;
 
-    private void OnEnable()
-    {
-        EventsHolder.Hit += OnHit;
-    }
+        private void Awake()
+        {
+            _scoreText = GetComponent<TMP_Text>();
+        }
 
-    private void OnHit(int value)
-    {
-        Debug.Log(value);
-        _value += value;
-        _scoreText.SetText($"Score: {_value}");
-    }
+        private void OnEnable()
+        {
+            EventsHolder.Hit += OnHit;
+        }
 
-    private void OnDisable()
-    {
-        EventsHolder.Hit -= OnHit;
+        private void OnHit(int value)
+        {
+            Debug.Log(value);
+            _value += value;
+            _scoreText.SetText($"Score: {_value}");
+        }
+
+        private void OnDisable()
+        {
+            EventsHolder.Hit -= OnHit;
+        }
     }
 }

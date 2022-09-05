@@ -11,7 +11,7 @@ namespace Data
         [SerializeField] private List<Color> _colors;
         [SerializeField, Range(0.65f, 2f)] private float _minSize, _maxSize;
         [SerializeField, Range(5, 20)] private float _averageSpeed ;
-        private int _rewardPoints = 50;
+        [SerializeField] private int _rewardPoints = 50;
 
         public BallProperties Get()
         {

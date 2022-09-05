@@ -1,19 +1,20 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseInput : IInput
+namespace Input
 {
-    private readonly int _leftButton = 0;
-
-    public event Action<Vector3> Clicked;
-
-    public void Click()
+    public class MouseInput : IInput
     {
-        if (Input.GetMouseButtonDown(_leftButton))
+        private readonly int _leftButton = 0;
+
+        public event Action<Vector3> Clicked;
+
+        public void Click()
         {
-            Clicked?.Invoke(Input.mousePosition);
+            if (Input.GetMouseButtonDown(_leftButton))
+            {
+                Clicked?.Invoke(Input.mousePosition);
+            }
         }
     }
 }

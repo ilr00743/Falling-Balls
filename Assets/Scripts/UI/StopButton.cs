@@ -1,32 +1,33 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
-public class StopButton : MonoBehaviour
+namespace UI
 {
-    private Button _button;
-    public event Action Clicked;
-
-    private void Awake()
+    [RequireComponent(typeof(Button))]
+    public class StopButton : MonoBehaviour
     {
-        _button = GetComponent<Button>();
-    }
+        private Button _button;
+        public event Action Clicked;
 
-    private void OnEnable()
-    {
-        _button.onClick.AddListener(OnButtonClicked);
-    }
+        private void Awake()
+        {
+            _button = GetComponent<Button>();
+        }
 
-    private void OnButtonClicked()
-    {
-        Clicked?.Invoke();
-    }
+        private void OnEnable()
+        {
+            _button.onClick.AddListener(OnButtonClicked);
+        }
 
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(OnButtonClicked);
+        private void OnButtonClicked()
+        {
+            Clicked?.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(OnButtonClicked);
+        }
     }
 }

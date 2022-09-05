@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using Data;
+using Target;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BallFactory", menuName = "Ball/Factory", order = 0)]
-public class BallFactory : ScriptableObject
+namespace Factory
 {
-    [SerializeField] Ball _ball;
-    [SerializeField] private BallPropertiesGenerator _propertiesGenerator;
-
-    public Ball Get()
+    [CreateAssetMenu(fileName = "BallFactory", menuName = "Ball/Factory", order = 0)]
+    public class BallFactory : ScriptableObject
     {
-        Ball instance = Instantiate(_ball);
-        BallProperties ballProperties = _propertiesGenerator.Get();
-        instance.Init(ballProperties);
-        return instance;
+        [SerializeField] Ball _ball;
+        [SerializeField] private BallPropertiesGenerator _propertiesGenerator;
+
+        public Ball Get()
+        {
+            Ball instance = Instantiate(_ball);
+            BallProperties ballProperties = _propertiesGenerator.Get();
+            instance.Init(ballProperties);
+            return instance;
+        }
     }
 }

@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface ITarget
+namespace Target
 {
-    public void TakeHit();
+    public interface ITarget
+    {
+        public void TakeHit();
+    }
 }

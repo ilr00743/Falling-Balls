@@ -1,41 +1,44 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
+using Target;
+using UI;
 using UnityEngine;
 
-public class BallSpawner : MonoBehaviour
+namespace Factory
 {
-    [SerializeField] private BallFactory _ballFactory;
-    [SerializeField] private ScreenBounds _screenBounds;
-    [SerializeField, Range(1, 10)] private float _spawnInterval;
-
-    private IEnumerator _coroutine;
-
-    private void Start()
+    public class BallSpawner : MonoBehaviour
     {
-        _screenBounds.Init();
-        _coroutine = Spawn();
-        StartCoroutine(_coroutine);
-    }
+        [SerializeField] private BallFactory _ballFactory;
+        [SerializeField] private ScreenBounds _screenBounds;
+        [SerializeField, Range(1, 10)] private float _spawnInterval;
 
-    private void StartSpawn()
-    {
-        StartCoroutine(_coroutine);
-    }
+        private IEnumerator _coroutine;
 
-    private void StopSpawn()
-    {
-        StopCoroutine(_coroutine);
-    }
-
-    private IEnumerator Spawn()
-    {
-        while (true)
+        private void Start()
         {
-            Ball ball;
-            ball = _ballFactory.Get();
-            ball.SpawnTo(_screenBounds);
-            yield return new WaitForSeconds(_spawnInterval);
+            _screenBounds.Init();
+            _coroutine = Spawn();
+            StartCoroutine(_coroutine);
+        }
+
+        private void StartSpawn()
+        {
+            StartCoroutine(_coroutine);
+        }
+
+        private void StopSpawn()
+        {
+            StopCoroutine(_coroutine);
+        }
+
+        private IEnumerator Spawn()
+        {
+            while (true)
+            {
+                Ball ball;
+                ball = _ballFactory.Get();
+                ball.SpawnTo(_screenBounds);
+                yield return new WaitForSeconds(_spawnInterval);
+            }
         }
     }
 }
