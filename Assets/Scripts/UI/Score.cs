@@ -30,7 +30,8 @@ namespace FallingBalls.UI
 
         private void OnClicked()
         {
-            _scoreText.SetText("Score: 0");
+            _value = 0;
+            _scoreText.SetText($"Score: {_value}");
         }
 
         private void OnDisable()
