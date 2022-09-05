@@ -1,24 +1,41 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
 {
-    private IInput _input;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private BallFactory _ballFactory;
+    [SerializeField] private ScreenBounds _screenBounds;
+    [SerializeField, Range(1, 10)] private float _spawnInterval;
+
+    private IEnumerator _coroutine;
+
+    private void Start()
     {
-#if UNITY_STANDALONE
-        _input = new MouseInput();
-#endif
-#if UNITY_IOS || UNITY_ANDROID
-        _input = new MobileInput();
-#endif
+        _screenBounds.Init();
+        _coroutine = Spawn();
+        StartCoroutine(_coroutine);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void StartSpawn()
     {
-        
+        StartCoroutine(_coroutine);
+    }
+
+    private void StopSpawn()
+    {
+        StopCoroutine(_coroutine);
+    }
+
+    private IEnumerator Spawn()
+    {
+        while (true)
+        {
+            Ball ball;
+            ball = _ballFactory.Get();
+            ball.SpawnTo(_screenBounds);
+            yield return new WaitForSeconds(_spawnInterval);
+        }
     }
 }
