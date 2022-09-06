@@ -7,7 +7,7 @@ namespace FallingBalls.Factory
     [CreateAssetMenu(fileName = "BallFactory", menuName = "Ball/Factory", order = 0)]
     public class BallFactory : ScriptableObject
     {
-        [SerializeField] Ball _ball;
+        [SerializeField] private Ball _ball;
         [SerializeField] private BallPropertiesGenerator _propertiesGenerator;
 
         public Ball Get()
